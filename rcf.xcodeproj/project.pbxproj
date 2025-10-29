@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		49FD297A2EB2B8460010A4F9 /* rcf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rcf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49FD297A2EB2B8460010A4F9 /* rcf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = rcf.app; path = CFGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -255,14 +255,17 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CFGen;
+				INFOPLIST_KEY_CFBundleName = CFGen;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsAppShortcuts = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.rcf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CFGen;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -285,14 +288,17 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = CFGen;
+				INFOPLIST_KEY_CFBundleName = CFGen;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsAppShortcuts = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.rcf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CFGen;
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
