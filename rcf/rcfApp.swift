@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let generator = CodiceFiscaleGenerator()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
+        
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         statusItem.button?.title = "CFGen"
         constructMenu()
@@ -28,6 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func constructMenu() {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Genera CF casuale e copia", action: #selector(generateAndCopy), keyEquivalent: "g"))
+        menu.addItem(NSMenuItem(title: "Genera numero telefono casuale e copia", action: #selector(generateAndCopyPhoneNumber), keyEquivalent: "t"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Esci", action: #selector(quit), keyEquivalent: "q"))
         statusItem.menu = menu
@@ -43,6 +46,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let notification = NSUserNotification()
         notification.title = "Codice fiscale generato"
         notification.informativeText = cf
+        NSUserNotificationCenter.default.deliver(notification)
+    }
+
+    @objc func generateAndCopyPhoneNumber() {
+        let phone = generator.generateRandomPhoneNumber()
+        // Copia negli appunti
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(phone, forType: .string)
+
+        // Notifica breve
+        let notification = NSUserNotification()
+        notification.title = "Numero di telefono generato"
+        notification.informativeText = phone
         NSUserNotificationCenter.default.deliver(notification)
     }
 
