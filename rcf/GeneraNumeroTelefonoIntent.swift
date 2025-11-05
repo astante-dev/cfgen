@@ -1,7 +1,7 @@
 import AppIntents
 import AppKit
 
-@available(macOS 13.0, *)
+@available(macOS 14.0, *)
 struct GeneraNumeroTelefonoIntent: AppIntent {
     static var title: LocalizedStringResource = "Genera Numero di Telefono Random"
     static var description = IntentDescription("Genera un numero di telefono italiano casuale e lo copia negli appunti")

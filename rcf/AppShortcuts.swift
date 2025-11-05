@@ -1,6 +1,6 @@
 import AppIntents
 
-@available(macOS 13.0, *)
+@available(macOS 14.0, *)
 struct AppShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         return [
