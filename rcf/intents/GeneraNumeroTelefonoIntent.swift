@@ -13,7 +13,7 @@ struct GeneraNumeroTelefonoIntent: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        let generator = CodiceFiscaleGenerator()
+        let generator = TelefonoGenerator()
         let numeroTelefono = generator.generateRandomPhoneNumber()
         
         // Copia negli appunti
