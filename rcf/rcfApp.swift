@@ -6,8 +6,11 @@ struct CFGenApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
+        // Nessuna scena necessaria per un'app menu bar senza finestre
         Settings {
-            EmptyView()
+            // View vuota ma valida per evitare problemi di layout
+            Color.clear
+                .frame(width: 0, height: 0)
         }
     }
 }
@@ -19,8 +22,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.title = "CFGen"
+        statusItem = NSStatusBar.system.statusItem(withLength: 22)
+        
+        // Imposta l'icona del menu bar
+        guard let button = statusItem.button else { return }
+        
+        if let image = NSImage(named: "sock") {
+            image.isTemplate = true
+            image.size = NSSize(width: 18, height: 18)
+            button.image = image
+            button.imagePosition = .imageOnly
+        } else {
+            button.title = "CFGen"
+        }
+        
         constructMenu()
         
         // Genera e copia automaticamente quando l'app viene lanciata
@@ -41,12 +56,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Copia negli appunti
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(cf, forType: .string)
-
-        // Notifica breve
-        let notification = NSUserNotification()
-        notification.title = "Codice fiscale generato"
-        notification.informativeText = cf
-        NSUserNotificationCenter.default.deliver(notification)
     }
 
     @objc func generateAndCopyPhoneNumber() {
@@ -54,12 +63,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Copia negli appunti
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(phone, forType: .string)
-
-        // Notifica breve
-        let notification = NSUserNotification()
-        notification.title = "Numero di telefono generato"
-        notification.informativeText = phone
-        NSUserNotificationCenter.default.deliver(notification)
     }
 
     @objc func quit() {
