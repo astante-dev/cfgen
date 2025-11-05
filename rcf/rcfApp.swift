@@ -8,9 +8,9 @@ struct CFGenApp: App {
     var body: some Scene {
         // Nessuna scena necessaria per un'app menu bar senza finestre
         Settings {
-            // View vuota ma valida per evitare problemi di layout
-            Color.clear
-                .frame(width: 0, height: 0)
+            Text("")
+                .frame(width: 1, height: 1)
+                .hidden()
         }
     }
 }
